@@ -21,9 +21,11 @@ while(ch!='f'):
         print('--------- 1! + 2! + 3! + 4! + .....n! ---------')
         r = int(input('Enter range upto you want to calculate the series:'))
         fact = 1
+        sum = 0
         for i in range(1,r+1):
             fact = fact * i
-        print(f'Factorial of {r} is {fact}.')
+            sum += fact
+        print(f'Sum of Factorials upto {r} is {sum}.')
         print('-------------------------------')
 
     elif(ch == 'b'):
@@ -86,4 +88,5 @@ while(ch!='f'):
         print('INVALID CHOISE.')
         print('-------------------------------')
     
+
 
