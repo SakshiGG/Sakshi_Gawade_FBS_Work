@@ -1,0 +1,188 @@
+Q.1)
+select e_name,salary 
+from employee
+order by salary desc;
+
+
+Q.2)
+select e_name,salary
+from employee
+order by desc
+limit 5;
+
+Q.3)
+select * 
+from employee
+limit 5 offset 3;
+
+Q.4)
+select dept_id,count(e_name) as 'employee count'
+from employee
+group by dept_id;
+
+Q.5)
+select dept_id,avg(salary) as 'average salary'
+from employee
+group by dept_id
+having avg(salary) > 50000;
+
+
+Q.6)
+select p_name 
+from products
+where p_name like "%laptop%";
+
+
+Q.7)
+select substr(student_name,1,3) from student;
+
+
+Q.8)
+select *
+from student
+where student_name like "A%";
+
+
+Q.9)
+select count(order) as 'order count, month(date) as 'month'
+from product_order
+group by month(date)
+having count(order) > 100;
+
+
+Q.10)
+select category,sum(sales) as 'Total sales',avg(sales) as 'average salary'
+from product_sales
+group by category
+having sum(sales) > 100000;
+
+
+Q.11)
+select * 
+from employee
+where salary between 30000 and 60000;
+
+Q.12)
+select * 
+from employee
+where department not in ('HR','Admin');
+
+
+Q.13)
+select * 
+from student 
+where email_id is null;
+
+Q.14)
+select * 
+from employee
+where department in (1,3);
+
+Q.15)
+select * 
+from employee
+where age > 25 and salary < 50000;
+
+Q.16)
+select dept_id, max(salary) as 'Maximum salary'
+from employee
+group by dept_id;
+
+
+Q.17)
+select city, count(s_id) as 'student count' 
+from student
+group by city;
+
+Q.18)
+select 
+min(salary) as 'Minimum salary' ,
+max(salary) as 'Maximum salary' ,
+avg(salary) as 'Average salary' 
+from employee;
+
+
+Q.19)
+select dept_id, count(e_id) as 'employee count'
+from employee
+group by dept_id
+having count(e_id) > 5;
+
+
+Q.20)
+select dept_id, sum(salary) as 'Total salary'
+from employee
+group by dept_id
+order by sum(salary) desc;
+
+
+Q.21)
+select upper(e_name) 
+from employee;
+
+
+Q.22)
+select e_name, length(e_name) as 'Length of name'
+from employee;
+
+Q.23)
+select substr(student_name,-2) 
+from employee;
+
+
+Q.24)
+select e_name,salary
+from employee
+order by salary asc
+limit 3;
+
+
+Q.25)
+select product_name,price
+from products
+order by price asc, product_name desc;
+
+
+Q.26)
+C.HAVING
+
+
+Q.27)
+B. COUNT()
+
+
+Q.28)
+B. IS NULL
+
+
+Q.29)
+B. ORDER BY
+
+
+Q.30)
+B. Check range of values
+
+
+Q.31)
+C. AVG()
+
+
+Q.32)
+B. GROUP BY
+
+
+Q.33)
+C. LIMIT
+
+Q.34)
+C. LIKE
+
+
+Q.35)
+C. Total numbers of rows
+
+
+
+
+
+

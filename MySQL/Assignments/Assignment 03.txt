@@ -1,0 +1,133 @@
+Q.1)
+mysql> insert into employee
+    -> values
+    -> (100, 'Steven', 'King', 'SKING', '5151234567', '1987-06-17', 'AD_PRES', 24000, 0, 200, 10),
+    -> (101, 'Neena', 'Kochhar', 'NKOCHHAR', '5151234568', '1987-06-18', 'AD_VP', 17000, 0, 200, 10),
+    -> (102, 'Lex', 'De Haan', 'LDEHAAN', '5151234569', '1987-06-19', 'AD_VP', 17000, 0, 200, 10),
+    -> (103, 'Alexander', 'Hunold', 'AHUNOLD', '5904234567', '1987-06-20', 'IT_PROG', 9000, 0, 103, 60),
+    -> (104, 'Bruce', 'Ernst', 'BERNST', '5904234568', '1987-06-21', 'IT_PROG', 6000, 0, 103, 60),
+    -> (105, 'David', 'Austin', 'DAUSTIN', '5904234569', '1987-06-22', 'IT_PROG', 4800, 0, 103, 60),
+    -> (106, 'Valli', 'Pataballa', 'VPATABAL', '5904234560', '1987-06-23', 'IT_PROG', 4800, 0, 103, 60),
+    -> (107, 'Diana', 'Lorentz', 'DLORENTZ', '5904235567', '1987-06-24', 'IT_PROG', 4200, 0, 114, 30),
+    -> (108, 'Nancy', 'Greenberg', 'NGREENBE', '5151244569', '1987-06-25', 'SA_MAN', 12000, 0, 145, 80),
+    -> (109, 'Daniel', 'Faviet', 'DFAVIET', '5151244169', '1987-06-26', 'SA_MAN', 9000, 0, 145, 80);
+Query OK, 9 rows affected (0.01 sec)
+
+mysql> insert into department
+    -> values
+    -> (10,'Administration',200,1700),
+    -> (20,'Marketing',201,1800),
+    -> (30,'Purchasing',114,1700),
+    -> (40,'Human Resourses',203,2400),
+    -> (50,'Shipping',121,1500),
+    -> (60,'IT',103,1400),
+    -> (70,'Public relation',204,2700),
+    -> (80,'sales',145,2500);
+Query OK, 8 rows affected (0.02 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+
+Q.2)
+mysql> insert into department (department_id, department_name, manager_id, location_id)
+    -> values
+    -> (90, 'Finance', 205, 2600),
+    -> (100, 'Operations', 206, 2800),
+    -> (110, 'Support', 207, 2900);
+Query OK, 3 rows affected (0.02 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+Q.3)
+mysql> INSERT INTO jobs (job_id, job_title, min_salary, max_salary)
+    -> values
+    -> ('AD_PRES','President',20000, 40000),
+    -> ('AD_VP','Administration Vice President', 15000, 30000),
+    -> ('AD_ASST','Administration Assistant',3000,6000),
+    -> ('FI_MGR','Finance Manager',16000,NULL),
+    -> ('FI_ACCOUNT','Accountant',4200,9000),
+    -> ('AC_MGR','Accounting Manager',8200,16000),
+    -> ('AC_ACCOUNT','Public Accountant',4200,10000),
+    -> ('SA_MAN','Sales Manager',20000,NULL);
+Query OK, 8 rows affected (0.01 sec)
+Records: 8  Duplicates: 0  Warnings: 0
+
+
+Q.4)
+mysql> update employee
+    -> set salary = salary + (salary * 0.10)
+    -> ;
+Query OK, 10 rows affected (0.01 sec)
+Rows matched: 10  Changed: 10  Warnings: 0
+
+
+Q.5)
+mysql> update employee
+    -> set email = 'Not Available'
+    -> where department_id = 80 and commission < 0.20;
+Query OK, 2 rows affected (0.01 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> table employee;
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+| employee_id | first_name | last_name | email         | phone_number | hire_date  | job_id  | salary   | commission | manager_id | department_id |
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+|         100 | Steven     | King      | SKING         | 5151234567   | 1987-06-17 | AD_PRES | 26400.00 |       0.00 |        200 |            10 |
+|         101 | Neena      | Kochhar   | NKOCHHAR      | 5151234568   | 1987-06-18 | AD_VP   | 18700.00 |       0.00 |        200 |            10 |
+|         102 | Lex        | De Haan   | LDEHAAN       | 5151234569   | 1987-06-19 | AD_VP   | 18700.00 |       0.00 |        200 |            10 |
+|         103 | Alexander  | Hunold    | AHUNOLD       | 5904234567   | 1987-06-20 | IT_PROG |  9900.00 |       0.00 |        103 |            60 |
+|         104 | Bruce      | Ernst     | BERNST        | 5904234568   | 1987-06-21 | IT_PROG |  6600.00 |       0.00 |        103 |            60 |
+|         105 | David      | Austin    | DAUSTIN       | 5904234569   | 1987-06-22 | IT_PROG |  5280.00 |       0.00 |        103 |            60 |
+|         106 | Valli      | Pataballa | VPATABAL      | 5904234560   | 1987-06-23 | IT_PROG |  5280.00 |       0.00 |        103 |            60 |
+|         107 | Diana      | Lorentz   | DLORENTZ      | 5904235567   | 1987-06-24 | IT_PROG |  4620.00 |       0.00 |        114 |            30 |
+|         108 | Nancy      | Greenberg | Not Available | 5151244569   | 1987-06-25 | SA_MAN  | 13200.00 |       0.00 |        145 |            80 |
+|         109 | Daniel     | Faviet    | Not Available | 5151244169   | 1987-06-26 | SA_MAN  |  9900.00 |       0.00 |        145 |            80 |
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+10 rows in set (0.00 sec)
+
+
+Q.6)
+mysql> update employee
+    -> set email = 'Not Available'
+    -> where department_id = 30;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> table employee;
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+| employee_id | first_name | last_name | email         | phone_number | hire_date  | job_id  | salary   | commission | manager_id | department_id |
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+|         100 | Steven     | King      | SKING         | 5151234567   | 1987-06-17 | AD_PRES | 26400.00 |       0.00 |        200 |            10 |
+|         101 | Neena      | Kochhar   | NKOCHHAR      | 5151234568   | 1987-06-18 | AD_VP   | 18700.00 |       0.00 |        200 |            10 |
+|         102 | Lex        | De Haan   | LDEHAAN       | 5151234569   | 1987-06-19 | AD_VP   | 18700.00 |       0.00 |        200 |            10 |
+|         103 | Alexander  | Hunold    | AHUNOLD       | 5904234567   | 1987-06-20 | IT_PROG |  9900.00 |       0.00 |        103 |            60 |
+|         104 | Bruce      | Ernst     | BERNST        | 5904234568   | 1987-06-21 | IT_PROG |  6600.00 |       0.00 |        103 |            60 |
+|         105 | David      | Austin    | DAUSTIN       | 5904234569   | 1987-06-22 | IT_PROG |  5280.00 |       0.00 |        103 |            60 |
+|         106 | Valli      | Pataballa | VPATABAL      | 5904234560   | 1987-06-23 | IT_PROG |  5280.00 |       0.00 |        103 |            60 |
+|         107 | Diana      | Lorentz   | Not Available | 5904235567   | 1987-06-24 | IT_PROG |  4620.00 |       0.00 |        114 |            30 |
+|         108 | Nancy      | Greenberg | Not Available | 5151244569   | 1987-06-25 | SA_MAN  | 13200.00 |       0.00 |        145 |            80 |
+|         109 | Daniel     | Faviet    | Not Available | 5151244169   | 1987-06-26 | SA_MAN  |  9900.00 |       0.00 |        145 |            80 |
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+10 rows in set (0.00 sec)
+
+
+Q.7)
+mysql> update employee
+    -> set email = 'Not Available' , commission = 0.10;
+Query OK, 10 rows affected (0.08 sec)
+Rows matched: 10  Changed: 10  Warnings: 0
+
+mysql> table employee;
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+| employee_id | first_name | last_name | email         | phone_number | hire_date  | job_id  | salary   | commission | manager_id | department_id |
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+|         100 | Steven     | King      | Not Available | 5151234567   | 1987-06-17 | AD_PRES | 26400.00 |       0.10 |        200 |            10 |
+|         101 | Neena      | Kochhar   | Not Available | 5151234568   | 1987-06-18 | AD_VP   | 18700.00 |       0.10 |        200 |            10 |
+|         102 | Lex        | De Haan   | Not Available | 5151234569   | 1987-06-19 | AD_VP   | 18700.00 |       0.10 |        200 |            10 |
+|         103 | Alexander  | Hunold    | Not Available | 5904234567   | 1987-06-20 | IT_PROG |  9900.00 |       0.10 |        103 |            60 |
+|         104 | Bruce      | Ernst     | Not Available | 5904234568   | 1987-06-21 | IT_PROG |  6600.00 |       0.10 |        103 |            60 |
+|         105 | David      | Austin    | Not Available | 5904234569   | 1987-06-22 | IT_PROG |  5280.00 |       0.10 |        103 |            60 |
+|         106 | Valli      | Pataballa | Not Available | 5904234560   | 1987-06-23 | IT_PROG |  5280.00 |       0.10 |        103 |            60 |
+|         107 | Diana      | Lorentz   | Not Available | 5904235567   | 1987-06-24 | IT_PROG |  4620.00 |       0.10 |        114 |            30 |
+|         108 | Nancy      | Greenberg | Not Available | 5151244569   | 1987-06-25 | SA_MAN  | 13200.00 |       0.10 |        145 |            80 |
+|         109 | Daniel     | Faviet    | Not Available | 5151244169   | 1987-06-26 | SA_MAN  |  9900.00 |       0.10 |        145 |            80 |
++-------------+------------+-----------+---------------+--------------+------------+---------+----------+------------+------------+---------------+
+10 rows in set (0.00 sec)
